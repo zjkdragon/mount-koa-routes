@@ -3,7 +3,6 @@ var requireDirectory = require('require-directory');
 var routes = requireDirectory(module, './routes');
 
 var koa = require('koa-router')(); 
-var convert = require('koa-convert');
 
 var stack = [];
 /**
@@ -148,7 +147,7 @@ function mount_with_folder(app, routes_folder_path) {
   
   mount(koa) ;
   // console.log(koa.routes());
-  app.use(convert(koa.routes()));
+  app.use(koa.routes());
   
   if(is_debug){
     _dump (routes_folder_path);
